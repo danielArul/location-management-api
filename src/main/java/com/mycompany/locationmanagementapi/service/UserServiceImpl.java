@@ -85,8 +85,8 @@ public class UserServiceImpl implements UserService{
         }
 
         UserEntity userEntity = userConverter.convertModelToEntity(userModel);
-
         UserEntity userEntity1 = entityRepository.save(userEntity);
+
         return userEntity1.getId();
     }
 }

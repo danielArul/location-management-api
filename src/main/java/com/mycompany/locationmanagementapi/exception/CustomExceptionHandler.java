@@ -23,8 +23,8 @@ public class CustomExceptionHandler {
             logger.debug("Inside handleBusinessException: {},{}", errorModel.getCode(), errorModel.getMessage());
         }
 
-        ResponseEntity<List<ErrorModel>> responseEntity = new ResponseEntity<>(be.getErrorList(), HttpStatus.BAD_REQUEST);
-        return responseEntity;
+        return new ResponseEntity<>(be.getErrorList(), HttpStatus.BAD_REQUEST);
+
     }
 
     @ExceptionHandler(Exception.class)
@@ -40,7 +40,6 @@ public class CustomExceptionHandler {
         errorModelList.add(errorModel);
 
         logger.error("Inside handleAllException: {},{}", ex.getMessage());
-        ResponseEntity<List<ErrorModel>> responseEntity = new ResponseEntity<>(errorModelList, HttpStatus.INTERNAL_SERVER_ERROR);
-        return responseEntity;
-    }
+        return new ResponseEntity<>(errorModelList, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 }
